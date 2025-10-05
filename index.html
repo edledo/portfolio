@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인 포트폴리오</title>
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- css -->
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./index.css">
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<script>
+    $(function(){
+        // 네비게이션 ---------------------------------------------------------
+        $("a.link").click(function(event){    
+            // event.preventDefault();
+            $('html,body').animate({scrollTop:$(this.hash).offset().top}, 600);
+        });
+        
+        // 탑버튼 ------------------------------------------------------------
+        $(".top-btn, .logo").on("click", function() {
+            $("html, body").animate({scrollTop:0}, '600');
+            return false;
+        });
+
+        // fix --------------------------------------------------------------
+        $(window).scroll(function () {
+            var scrollValue = $(document).scrollTop(); 
+            // console.log(scrollValue);
+            if ( scrollValue > 1 ){
+                $(".top-btn").addClass('on');
+                $(".hd-wrap").addClass('scroll');
+            } else if(scrollValue < 1) {
+                $(".top-btn").removeClass('on');
+                $(".hd-wrap").removeClass('scroll');
+            } else {
+                $(".top-btn").removeClass('on');
+                $(".hd-wrap").removeClass('scroll');
+            }
+         });
+
+        // 스크롤 이벤트 ---------------------------------------------------------
+        const options = {
+           root: null, // viewport
+           rootMargin: "0px",
+           threshold: 0,  // 50%가 viewport에 들어와 있어야 callback 실행
+        }
+     
+        const observer = new IntersectionObserver(entries => {
+           entries.forEach(entry => {
+             if (entry.isIntersecting) {
+                entry.target.classList.add('move'); }
+                //  else {
+                //  entry.target.classList.remove('move')
+                //  }
+                }
+            );
+        }, options);
+     
+        const boxList = document.querySelectorAll('.s-event');
+     
+        // 반복문을 돌려 모든 DOM에 적용
+        boxList.forEach(el => observer.observe(el));
+
+        });
+</script>
+<body>
+    <div class="wrap">
+        <div class="mouse-shapes"></div>
+
+        <header class="hd-wrap">
+            <div class="hd-inner grid">
+                <h1 class="logo link bold">ㄱㄷㅇ</h1>
+                <ul class="nav">
+                    <li class="menu">
+                        <a href="#about" class="link">ABOUT</a>
+                    </li>
+                    <li class="menu">
+                        <a href="#work" class="link">WORK</a>
+                    </li>
+                    <li class="menu">
+                        <a href="#contact" class="link">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+            
+        </header>
+
+        <div class="containar-wrap">
+            <main id="main" class="main">
+                <div class="grid">
+                    <div class="main-text">
+                        <h2 class="ex-bold">WEB PUBLISHER</h2>
+                        <p>안녕하세요 웝 퍼블리셔 고다은의<br>개인 포트폴리오 사이트 입니다.</p>
+                    </div>
+                </div>
+            </main>
+            <div class="containar-inner">
+                <section class="intruduce">
+                    <div class="grid">
+                        <h3 class="txt-left">안녕하세요 <span class="bold">웹 퍼블리셔 고다은</span>입니다.<br>
+                            저는 다양한 사용자를 고려하여 웹 표준 및 웹 접근성 준수하고<br> 
+                            크로스 브라우징을 신경써서 작업하고있습니다.</h3>
+                        <h3 class="txt-right s-event">팀원들과 원활한 소통으로 협력하여 의견을 나누고<br>
+                        좋은 결과물을 낼 수 있도록 최선을 다하겠습니다.</h3>
+                    </div>
+                </section>
+            
+                <section id="about" class="about s-event">
+                    <div class="grid">
+                        <h2 class="sec-tit ex-bold">ABOUT</h2>
+                        <div class="group">
+                            <div class="about-img left">
+                                <img src="./assets/about-pic.png" alt="소개 이미지">
+                            </div>
+                            <div class="about-text right">
+                                <div class="text">
+                                    <h3 class="ex-bold">PROFILE</h3>
+                                    <div class="txt">
+                                        <p>고다은</p>
+                                        <p>1997. 05. 19</p>
+                                    </div>
+                                </div>
+                                <div class="text">
+                                    <h3 class="ex-bold">SKILLS</h3>
+                                    <div class="skill-group">
+                                        <h5>HTML5</h5>
+                                        <h5>CSS3</h5>
+                                        <h5>JQuery</h5>
+                                        <h5>Javascript</h5>
+                                        <h5>Photoshop</h5>
+                                        <h5>Illustrator</h5>
+                                        <h5>Responsive Web</h5>
+                                    </div>
+                                </div>
+                                <div class="text">
+                                    <h3 class="ex-bold">EXPERIENCE</h3>
+                                    <div class="txt">
+                                        <p>아이티비즈</p>
+                                        <p>2022.08 ~ 2023.09</p>
+                                    </div>
+                                </div>
+                                <div class="text">
+                                    <h3 class="ex-bold">EDUCATION</h3>
+                                    <div class="txt">
+                                        <p>유한대학교 애니메이션과</p>
+                                        <p>그린컴퓨터아카데미 웹디자인&퍼블리싱 과정 수료</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            
+                <section id="work" class="work s-event">
+                    <div class="grid">
+                        <h2 class="sec-tit ex-bold">WORK</h2>
+                        <div class="work-list group">
+                        
+                            <div class="project">
+                                <div class="work-img left">
+                                    <img src="./assets/work-pic-03.png" alt="프로젝트 이미지">
+                                </div>
+                                <div class="work-text right">
+                                    <h3 class="number ex-bold blue">01</h3>
+                                    <div class="text">
+                                        <h3 class="work-tit ex-bold">역곡상상시장</h3>
+                                        <div class="txt">
+                                            <p>반응형</p>
+                                            <p>HTML5, CSS3, JQuery 사용</p>
+                                            <p>퍼블리싱 참여</p>
+                                            <button class="view-btn"><a href="http://www.ygmarket.co.kr/" target="_blank">Go Website</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="project">
+                                <div class="work-img left">
+                                    <img src="./assets/work-pic-01.png" alt="프로젝트 이미지">
+                                </div>
+                                <div class="work-text right">
+                                    <h3 class="number ex-bold blue">02</h3>
+                                    <div class="text">
+                                        <h3 class="work-tit ex-bold">하얀100</h3>
+                                        <div class="txt">
+                                            <p>반응형</p>
+                                            <p>HTML5, CSS3, JQuery 사용</p>
+                                            <p>퍼블리싱 참여</p>
+                                            <button class="view-btn"><a href="https://hayan100.co.kr/" target="_blank">Go Website</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="project">
+                                <div class="work-img left">
+                                    <img src="./assets/work-pic-02.png" alt="프로젝트 이미지">
+                                </div>
+                                <div class="work-text right">
+                                    <h3 class="number ex-bold blue">03</h3>
+                                    <div class="text">
+                                        <h3 class="work-tit ex-bold">비앤에스</h3>
+                                        <div class="txt">
+                                            <p>반응형</p>
+                                            <p>HTML5, CSS3, JQuery 사용</p>
+                                            <p>퍼블리싱 참여</p>
+                                            <button class="view-btn"><a href="http://www.bnsvip.co.kr/" target="_blank">Go Website</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </section>
+            
+                <section id="contact" class="contact s-event">
+                    <div class="grid">
+                        <h2 class="sec-tit ex-bold">CONTACT</h2>
+                        <div class="group">
+                            <h2 class="bold">끝까지 봐주셔서 감사합니다.</h2>
+                            <p class="copy">
+                                <label for="input-name">Email - </label>
+                                <input type="text" value="edledo059@gmail.com" onclick="this.select();document.execCommand('copy');alert('클립보드에 복사 되었습니다.');return false;" readonly /><span class="copy-icon hide"><i class="fa-regular fa-copy"></i></span>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    
+        <div class="top-btn">
+            <i class="fa-solid fa-chevron-up"></i>
+            <p>TOP</p>
+        </div>
+    
+        <footer class="footer-wrap">
+            <div class="grid">
+                <div class="ft-inner">
+                    <p>ⓒ 2025. GO DA EUN All rights reserved.</p>
+                    <p>본 사이트는 상업적 용도가 아닌 개인 포트폴리오 용으로 제작되었습니다.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
